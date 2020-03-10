@@ -7,25 +7,25 @@ class Waiter
     @years_exp = years_exp
     @@all << self
   end
-  #initializes with a name and years_exp 
-  #.all is a class method that returns the content of @@all 
+  #initializes with a name and years_exp
+  #.all is a class method that returns the content of @@all
 
   def self.all
     @@all
   end
-  #returns @@all 
+  #returns @@all
 
   def new_meal(customer, total, tip=0)
     Meal.new(self, customer, total, tip)
   end
-  #initializes a meal using the current waiter instances, a provided customer, total, and tip 
+  #initializes a meal using the current waiter instances, a provided customer, total, and tip
 
   def meals
     Meal.all.select do |meal|
       meal.waiter == self
     end
   end
-  #returns an array of meal instances associated with this waiter 
+  #returns an array of meal instances associated with this waiter
 
   def best_tipper
     best_tipped_meal = meals.max do |meal_a, meal_b|
@@ -33,6 +33,6 @@ class Waiter
     end
     best_tipped_meal.customer
   end
-  #returns the customer instances associated with the meal that recieved the best tip 
+  #returns the customer instances associated with the meal that recieved the best tip
 
 end
